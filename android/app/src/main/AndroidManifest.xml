@@ -1,0 +1,133 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+ xmlns:tools="http://schemas.android.com/tools"
+    package="com.myflips.realestatemarketplaces">
+    <queries>
+      <!-- If your app opens https URLs -->
+      <intent>
+        <action android:name="android.intent.action.VIEW" />
+        <data android:scheme="https" />
+      </intent>
+      <!-- If your app makes calls -->
+      <intent>
+        <action android:name="android.intent.action.DIAL" />
+        <data android:scheme="tel" />
+      </intent>
+      <!-- If your sends SMS messages -->
+      <intent>
+        <action android:name="android.intent.action.SENDTO" />
+        <data android:scheme="smsto" />
+      </intent>
+      <!-- If your app sends emails -->
+      <intent>
+        <action android:name="android.intent.action.SEND" />
+        <data android:mimeType="*/*" />
+      </intent>
+      </queries>
+      <uses-permission android:name="android.permission.INTERNET" /> <!-- this is mandatory -->
+      <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
+
+           <!-- uncomment required permissions here -->
+ 
+
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
+    <uses-permission android:name="android.permission.READ_MEDIA_VIDEO" />
+    <uses-permission android:name="android.permission.READ_MEDIA_AUDIO" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.AUDIO_CAPTURE" />
+    <uses-permission android:name="android.permission.VIDEO_CAPTURE" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.READ_PHONE_NUMBERS" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.INTERNAL_SYSTEM_WINDOW" />
+    <uses-permission android:name="android.permission.BROADCAST_SMS" />
+    <uses-permission android:name="android.permission.BIND_JOB_SERVICE" />
+    <uses-permission android:name="com.android.launcher.permission.INSTALL_SHORTCUT" />
+    <uses-permission android:name="com.android.launcher.permission.UNINSTALL_SHORTCUT" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.ACTION_MANAGE_OVERLAY_PERMISSION" />
+    <uses-permission android:name="android.permission.USE_BIOMETRIC" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
+    <uses-permission android:name="android.permission.READ_PRIVILEGED_PHONE_STATE" />
+    <uses-permission android:name="com.google.android.gms.permission.AD_ID" tools:node="remove" />
+    
+    <uses-permission android:name="android.webkit.resource.AUDIO_CAPTURE" />
+    <uses-permission android:name="android.webkit.resource.VIDEO_CAPTURE" />
+
+
+    <uses-feature android:name="android.hardware.audio.pro"  android:required="false" tools:replace="required" />
+    <uses-feature android:name="android.hardware.microphone"  android:required="false" tools:replace="required" />
+
+   <application
+        android:label="Real Estate Marketplace"
+        android:name="${applicationName}"
+        android:icon="@mipmap/ic_launcher"
+        android.usesCleartextTraffic="true"
+        android:requestLegacyExternalStorage="true">     <!-- this tag added to display downloading notification -->
+
+
+      <!-- to allow file permission-->
+      <provider
+          android:name="com.pichillilorenzo.flutter_inappwebview.InAppWebViewFileProvider"
+          android:authorities="${applicationId}.flutter_inappwebview.fileprovider"
+          android:exported="false"
+          android:grantUriPermissions="true">
+          <meta-data
+              android:name="android.support.FILE_PROVIDER_PATHS"
+              android:resource="@xml/provider_paths" />
+      </provider>
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:theme="@style/LaunchTheme"
+            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
+            android:hardwareAccelerated="true"
+            android:windowSoftInputMode="adjustResize"
+           
+            android:turnScreenOn="true">
+            <!-- Specifies an Android theme to apply to this Activity as soon as
+                 the Android process has started. This theme is visible to the user
+                 while the Flutter UI initializes. After that, this theme continues
+                 to determine the Window background behind the Flutter UI. -->
+            <meta-data
+              android:name="io.flutter.embedding.android.NormalTheme"
+              android:resource="@style/NormalTheme"
+              />
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+
+            <!-- Deep linking -->
+       
+        </activity>
+        <!-- Don't delete the meta-data below.
+             This is used by the Flutter tool to generate GeneratedPluginRegistrant.java -->
+        <meta-data
+            android:name="flutterEmbedding"
+            android:value="2" />
+
+         <!-- Sample AdMob app ID: ca-app-pub-3940256099942544~3347511713 -->
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-1999052671636317~2624868146"/>
+        <meta-data
+        android:name="com.onesignal.messaging.default_notification_icon"
+        android:resource="@mipmap/ic_stat_onesignal_default" />
+        <meta-data
+        android:name="com.onesignal.NotificationAccentColor.DEFAULT"
+        android:value="FFFFFF" />
+        <!-- below line Allows you to handle programmatically.
+Setting the value to false will launch the url in a browser.-->
+        <meta-data android:name="com.onesignal.suppressLaunchURLs" android:value="true"/>  
+        <!-- end -->
+    </application>
+</manifest>
+   
